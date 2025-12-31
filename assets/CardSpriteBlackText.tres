@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cl1k817m1a4bv"]
+
+[ext_resource type="FontFile" uid="uid://cn4b38c7xfha2" path="res://assets/DotGothic16-Regular.ttf" id="1_byxxo"]
+
+[resource]
+line_spacing = 3.14
+font = ExtResource("1_byxxo")
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
