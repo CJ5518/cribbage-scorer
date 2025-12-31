@@ -20,6 +20,7 @@ func _ready() -> void:
 	instance.setValue(card[0])
 	instance.position = Vector2(0,0)
 	add_child(instance)
+	
 
 
 

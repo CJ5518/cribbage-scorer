@@ -27,12 +27,32 @@ static func countNobs(hand: Array, cut: Array, _crib: bool) -> int:
 			return 1
 	return 0
 	
-static func countRuns(hand: Array, cut: Array, crib: bool) -> int:
-	pass
-static func countPairs(hand: Array, cut: Array, crib: bool) -> int:
-	pass
+static func countPairs(hand: Array, cut: Array, _crib: bool) -> int:
+	var score: int = 0
+	
+	var values = []
+	for q in range(hand):
+		values.append(hand[q][0])
+	values.append(cut[0])
+	values.sort()
+	
+	#pairs
+	var old = -1
+	var pairCount = 0
+	#run an extra time because we need to run the else condition again at the end
+	#I suppose a different type of loop could be applicable but stfu
+	for q in range(0, values.size() + 1):
+		if values.size() < q and values[q] == old:
+			pairCount += 1
+		else:
+			#pretty slick eh? 0 = 0, 1 = 2, 2 = 6, 3 = 12
+			score += (pairCount * pairCount) + pairCount
+			old = values[q]
+			pairCount = 0
+	
+	return score
 static func countFifteens(hand: Array, cut: Array, crib: bool) -> int:
-	pass
+	return 0
 
 #hand must be an array of cards (arrays)
 #cut is a card, an array of 2 numbers
@@ -42,6 +62,8 @@ static func countHand(hand: Array, cut: Array, crib: bool) -> int:
 	
 	score += countFlush(hand, cut, crib)
 	score += countNobs(hand, cut, crib)
+	score += countPairs(hand, cut, crib)
+	score += countFifteens(hand, cut, crib)
 	
 	
 	return score
