@@ -14,7 +14,7 @@ config/name="CribbageScorer"
 run/main_scene="uid://dckms4u1sxc1v"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 run/max_fps=60
-config/icon="res://icon.svg"
+config/icon="res://images/icon.svg"
 
 [display]
 
