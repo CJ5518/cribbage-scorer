@@ -1,7 +1,7 @@
 extends Node2D
 
 
-var scene = preload("res://CardSprite.tscn")
+var scene = preload("res://scenes/CardSprite.tscn")
 # Called when the node enters the scene tree for the first time.
 
 func makeRow(suit, yVal):

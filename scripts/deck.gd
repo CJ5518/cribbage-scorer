@@ -12,6 +12,9 @@ func _init() -> void:
 		initStaticDeck()
 	_deck = staticDeck.duplicate(true)
 
+func reset():
+	_init()
+
 func drawCard():
 	var randy = randi()
 	return _deck.pop_at(randy % _deck.size())
