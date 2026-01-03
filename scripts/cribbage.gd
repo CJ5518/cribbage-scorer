@@ -2,17 +2,6 @@ extends Object
 
 class_name Cribbage
 
-#removes all occurences of item from arr, and returns how many there were
-static func _removeAllFromArray(arr: Array, item: int) -> int:
-	var count: int = 0
-	while true:
-		var oldSize: int = arr.size()
-		arr.erase(item)
-		if oldSize == arr.size():
-			break
-		else:
-			count += 1
-	return count
 
 static func countFlush(hand: Array, cut: Array, crib: bool) -> int:
 	var score: int = 0
@@ -48,7 +37,6 @@ static func countPairs(hand: Array, cut: Array, _crib: bool) -> int:
 	var old = -1
 	var pairCount = 0
 	#run an extra time because we need to run the else condition again at the end
-	#I suppose a different type of loop could be applicable but stfu
 	for q in range(0, values.size() + 1):
 		if q < values.size() and values[q] == old:
 			pairCount += 1

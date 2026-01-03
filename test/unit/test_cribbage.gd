@@ -27,6 +27,7 @@ func test_nobsAndFlush():
 func test_pairs():
 	var suit = Cards.SUIT.CLUB
 	#technically these hands can't exist, but the pair checker doesn't care about suits anyway
+	#just make one card a different suit so it doesn't count a flush
 	assertScoreIs([[2,Cards.SUIT.DIAMOND],[2,suit],[6,suit],[8,suit]], [10,suit], false, 2)
 	assertScoreIs([[2,Cards.SUIT.DIAMOND],[2,suit],[6,suit],[2,suit]], [10,suit], false, 6)
 	assertScoreIs([[2,Cards.SUIT.DIAMOND],[2,suit],[2,suit],[8,suit]], [10,suit], false, 6)
