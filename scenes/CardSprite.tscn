@@ -7,20 +7,18 @@
 
 [node name="CardSprite" type="Node2D"]
 texture_filter = 1
-scale = Vector2(8, 8)
 script = ExtResource("1_y8pfl")
 
 [node name="CardBack" type="Sprite2D" parent="."]
-position = Vector2(16, 32)
+position = Vector2(14, 21)
 texture = ExtResource("1_feb5d")
 
 [node name="Suit" type="Sprite2D" parent="."]
-position = Vector2(15, 31)
+position = Vector2(14, 31)
 texture = ExtResource("2_fc0e3")
 
 [node name="Number" type="Label" parent="."]
 texture_filter = 1
-offset_left = 1.0
 offset_right = 29.0
 offset_bottom = 24.0
 text = "A"

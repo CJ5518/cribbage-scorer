@@ -7,5 +7,5 @@ func _ready() -> void:
 		func(): get_tree().quit()
 	)
 	$StartButton.button_down.connect(
-		func(): get_tree().change_scene_to_file("res://scenes/test_scene.tscn")
+		func(): get_tree().change_scene_to_file("res://scenes/game_scene.tscn")
 	)
