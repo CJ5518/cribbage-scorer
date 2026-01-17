@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bh3o6rb41ea0c"]
+
+[ext_resource type="FontFile" uid="uid://cn4b38c7xfha2" path="res://assets/DotGothic16-Regular.ttf" id="1_gnmeu"]
+
+[resource]
+font = ExtResource("1_gnmeu")
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0

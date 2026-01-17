@@ -19,5 +19,9 @@ func setSuit(suit):
 	else:
 		$Number.label_settings = preload("res://assets/CardSpriteBlackText.tres")
 
+
+const VALUE_POSITIONS = [[-1,0], [-1,-3], [-2,-3], [-3, -3], [-2,-3], [-2,0], [-1,-3], [-2,0], [-2,-3], [-1,-2], [-3,-2], [-2,0], [-3,0]]
 func setValue(value):
 	$Number.text = Cards.valueToCharacters(value)
+	$Number.position = Vector2(VALUE_POSITIONS[value-1][0], VALUE_POSITIONS[value-1][1])
+	

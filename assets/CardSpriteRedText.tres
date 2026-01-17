@@ -1,10 +1,11 @@
 [gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bvs02o8frclcl"]
 
-[ext_resource type="FontFile" uid="uid://cn4b38c7xfha2" path="res://assets/DotGothic16-Regular.ttf" id="1_5jr41"]
+[ext_resource type="FontFile" uid="uid://cfu1gv457e4cm" path="res://assets/Jacquard24-Regular.ttf" id="1_5jr41"]
 
 [resource]
 line_spacing = 3.14
 font = ExtResource("1_5jr41")
+font_size = 24
 font_color = Color(0.6745098, 0.19607843, 0.19607843, 1)
-outline_color = Color(0.6745098, 0.19607843, 0.19607843, 1)
+outline_color = Color(0, 0, 0, 1)
 shadow_size = 0

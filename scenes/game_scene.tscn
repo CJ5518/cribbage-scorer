@@ -1,6 +1,70 @@
-[gd_scene load_steps=2 format=3 uid="uid://tm8nio65l2cl"]
+[gd_scene load_steps=7 format=3 uid="uid://tm8nio65l2cl"]
 
-[ext_resource type="Script" uid="uid://c1lupamm4dei5" path="res://scenes/game_scene.gd" id="1_onqr8"]
+[ext_resource type="Script" uid="uid://c1lupamm4dei5" path="res://scripts/game_scene.gd" id="1_onqr8"]
+[ext_resource type="PackedScene" uid="uid://cdpshql6jftai" path="res://scenes/CardSprite.tscn" id="2_onqr8"]
+[ext_resource type="Theme" uid="uid://dam5y0lg1fiyp" path="res://assets/MenuTheme.tres" id="3_bw6k5"]
+[ext_resource type="FontFile" uid="uid://cn4b38c7xfha2" path="res://assets/DotGothic16-Regular.ttf" id="3_ycayy"]
+[ext_resource type="LabelSettings" uid="uid://bh3o6rb41ea0c" path="res://assets/DefaultLabelSettings.tres" id="5_y3j0m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bw6k5"]
+font = ExtResource("3_ycayy")
+font_size = 32
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_onqr8")
+
+[node name="CardSprite" parent="." instance=ExtResource("2_onqr8")]
+position = Vector2(170, 231)
+scale = Vector2(3, 3)
+
+[node name="CardSprite2" parent="." instance=ExtResource("2_onqr8")]
+position = Vector2(244.00002, 231)
+scale = Vector2(3, 3)
+
+[node name="CardSprite3" parent="." instance=ExtResource("2_onqr8")]
+position = Vector2(319, 231)
+scale = Vector2(3, 3)
+
+[node name="CardSprite4" parent="." instance=ExtResource("2_onqr8")]
+position = Vector2(393, 231)
+scale = Vector2(3, 3)
+
+[node name="CutCard" parent="." instance=ExtResource("2_onqr8")]
+position = Vector2(275, 105)
+scale = Vector2(3, 3)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+theme = ExtResource("3_bw6k5")
+
+[node name="StartButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 48.0
+offset_bottom = 36.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 16
+
+[node name="Label" type="Label" parent="Control/StartButton"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 43.0
+offset_bottom = 31.0
+text = "Menu"
+label_settings = ExtResource("5_y3j0m")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 538.0
+offset_top = 4.0
+offset_right = 638.0
+offset_bottom = 104.0
+text = "Menu"
+label_settings = SubResource("LabelSettings_bw6k5")

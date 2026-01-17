@@ -19,8 +19,10 @@ texture = ExtResource("2_fc0e3")
 
 [node name="Number" type="Label" parent="."]
 texture_filter = 1
-offset_right = 29.0
-offset_bottom = 24.0
-text = "A"
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 31.0
+offset_bottom = 46.0
+text = "9"
 label_settings = ExtResource("4_y8pfl")
 horizontal_alignment = 1
