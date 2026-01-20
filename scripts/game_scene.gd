@@ -7,19 +7,24 @@ const cardWidth = 25 * 8
 #cut card is last in the array
 var cardSprites = []
 
-# Called when the node enters the scene tree for the first time.
+var deck
+
+func setCard(obj, arr):
+	obj.setValue(arr[0])
+	obj.setSuit(arr[1])
+
+func randomCards():
+	deck.reset()
+	setCard($CardSprite, deck.drawCard())
+	setCard($CardSprite2, deck.drawCard())
+	setCard($CardSprite3, deck.drawCard())
+	setCard($CardSprite4, deck.drawCard())
+	setCard($CutCard, deck.drawCard())
+
 func _ready() -> void:
-	#Make the card nodes
-	var width = cardWidth * 4
-	@warning_ignore("integer_division")
-	var startAt = (1920 / 2) - (width / 2.0)
-	for q in range(4):
-		var instance = cardSprite.instantiate()
-		cardSprites.append(instance)
-		instance.position = Vector2(startAt + (q * cardWidth),600)
-		add_child(instance)
-
-
+	deck = Deck.new()
+	randomCards()
+	$Control/MenuButton.pressed.connect(randomCards)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

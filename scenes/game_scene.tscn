@@ -40,7 +40,7 @@ offset_right = 640.0
 offset_bottom = 360.0
 theme = ExtResource("3_bw6k5")
 
-[node name="StartButton" type="Button" parent="Control"]
+[node name="MenuButton" type="Button" parent="Control"]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 4.0
@@ -49,7 +49,7 @@ offset_bottom = 36.0
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 16
 
-[node name="Label" type="Label" parent="Control/StartButton"]
+[node name="Label" type="Label" parent="Control/MenuButton"]
 layout_mode = 0
 offset_left = 1.0
 offset_right = 43.0
