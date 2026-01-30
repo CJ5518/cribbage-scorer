@@ -51,27 +51,27 @@ static func countPairs(hand: Array, cut: Array, _crib: bool) -> int:
 	return score
 static func countFifteens(hand: Array, cut: Array, _crib: bool) -> int:
 	var values = []
+	var norm = func(val: int) -> int:
+		if val > 10:
+			return 10
+		return val
 	for q in range(hand.size()):
-		values.append(hand[q][0])
-	values.append(cut[0])
+		values.append(norm.call(hand[q][0]))
+	values.append(norm.call(cut[0]))
 	values.sort()
 	values.reverse()
-	var recurseFifteen = func fifteenRecurse(arr: Array, total: int, thisFunction: Callable) -> int:
-		if arr.size() == 0: return 0
-		var firstElem = arr[0]
-		if firstElem > 10: firstElem = 10
-		var newTotal = total + firstElem
-		if newTotal == 15: return 1
-		if newTotal > 15: return 0
-		var ours = arr.duplicate()
-		var ret: int = 0
-		var newArray = ours.duplicate()
-		for q in range(ours.size()):
-			newArray.remove_at(0)
-			ret += thisFunction.call(newArray, newTotal, thisFunction)
-		ours.remove_at(0)
-		return ret + thisFunction.call(ours, 0, thisFunction)
-	return recurseFifteen.call(values, 0, recurseFifteen) * 2
+	var addsUp: Callable
+	addsUp = func(subArr: Array, total: int, adUp: Callable) -> int:
+		var ret = 0
+		var subArrDup = subArr.duplicate()
+		ret += subArr.count(15 - total)
+		for q in range(subArr.size()):
+			var val = subArrDup.pop_at(0)
+			if val + total < 15:
+				ret += adUp.call(subArrDup, val + total, adUp)
+		return ret
+
+	return addsUp.call(values, 0, addsUp) * 2
 	
 static func countRuns(hand: Array, cut: Array, _crib: bool) -> int:
 	var score: int = 0
