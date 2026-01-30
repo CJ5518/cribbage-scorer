@@ -7,4 +7,4 @@
 script = ExtResource("1_5ba5p")
 
 [node name="CardSprite" parent="." instance=ExtResource("1_digok")]
-position = Vector2(219, 119)
+position = Vector2(227, 120)

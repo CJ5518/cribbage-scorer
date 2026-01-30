@@ -10,7 +10,7 @@ enum SUIT {
 }
 
 #Takes a value 1-13 and returns A,2,3,4...,9,10,J,Q,K
-static func valueToCharacters(value):
+static func valueToCharacters(value) -> String:
 	if value >= 2 and value <= 10:
 		return str(value)
 	match value:
@@ -24,3 +24,15 @@ static func valueToCharacters(value):
 			return "K"
 	#If all else fails return E for error
 	return "E"
+
+static func suitToString(suit) -> String:
+	match suit:
+		Cards.SUIT.CLUB:
+			return "Club"
+		Cards.SUIT.SPADE:
+			return "Spade"
+		Cards.SUIT.DIAMOND:
+			return "Diamond"
+		Cards.SUIT.HEART:
+			return "Heart"
+	return "Error"

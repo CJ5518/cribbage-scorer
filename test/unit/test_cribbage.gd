@@ -57,3 +57,4 @@ func test_counting():
 	var suit = Cards.SUIT.HEART
 	assertScoreIs([[4,suit],[5,suit],[3,suit],[6,suit]], [4,Cards.SUIT.SPADE], false, 18)
 	assertScoreIs([[4,suit],[5,suit],[6,Cards.SUIT.SPADE],[6,suit]], [4,Cards.SUIT.SPADE], false, 24)
+	assertScoreIs([[5, suit],[5,Cards.SUIT.CLUB],[5,suit],[5,suit]], [6,0], false, 20)

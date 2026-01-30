@@ -113,10 +113,15 @@ static func countHand(hand: Array, cut: Array, crib: bool) -> int:
 	var score: int = 0
 	
 	score += countFlush(hand, cut, crib)
+	print(score)
 	score += countNobs(hand, cut, crib)
+	print(score)
 	score += countPairs(hand, cut, crib)
+	print(score)
 	score += countFifteens(hand, cut, crib)
+	print(score)
 	score += countRuns(hand, cut, crib)
+	print(score)
 	
 	
 	return score
