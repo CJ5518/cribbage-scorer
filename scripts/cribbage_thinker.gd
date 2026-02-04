@@ -2,10 +2,10 @@ extends Object
 
 class_name CribbageThinker
 
-
 #Returns an array containing every possible hand after discarding
 #and statistics about the possible cut cards for each choice
-static func getFullThoughtsOn6CardHand(hand: Array):
+#ret = [{handChoice -> array, thoughts -> array, min -> int, max, probability}, same]
+static func getFullThoughtsOn6CardHand(hand: Array) -> Array:
 	var ret = []
 	#create a copy for editing
 	var tmp = hand.duplicate_deep()
@@ -33,6 +33,57 @@ static func getFullThoughtsOn6CardHand(hand: Array):
 		startAt += 1
 	return ret
 
+#returns several good choices hand
+static func pickGoodChoicesForDiscard(originalHand: Array) -> Array:
+	var ret: Array = []
+	
+	#ties broken by average
+	var idMaxMin = -1
+	var maxMin = -1
+	var idMaxMax = -1
+	var maxMax = -1
+	#ties broken by minimum
+	var idMaxAverage = -1
+	var maxAverage = -1
+	
+	var allChoices = getFullThoughtsOn6CardHand(originalHand)
+	
+	for q in range(allChoices.size()):
+		var choice = allChoices[q]
+		if maxMax == choice.max:
+			if choice.average > allChoices[idMaxMax].average:
+				idMaxMax = q
+				maxMax = choice.max
+		elif choice.max > maxMax:
+				idMaxMax = q
+				maxMax = choice.max
+		
+		if maxMin == choice.min:
+			if choice.average > allChoices[idMaxMin].average:
+				idMaxMin = q
+				maxMin = choice.min
+		elif choice.min > maxMin:
+				idMaxMin = q
+				maxMin = choice.min
+				
+		if choice.average == maxAverage:
+			if allChoices[idMaxAverage].min < choice.min:
+				idMaxAverage = q
+				maxAverage = choice.average
+		elif choice.average > maxAverage:
+				idMaxAverage = q
+				maxAverage = choice.average
+	var done = {}
+	done[idMaxAverage] = true
+	ret.append(allChoices[idMaxAverage].handChoice.duplicate_deep())
+	if not done.has(idMaxMax):
+		done[idMaxMax] = true
+		ret.append(allChoices[idMaxMax].handChoice.duplicate_deep())
+	if not done.has(idMaxMin):
+		ret.append(allChoices[idMaxMin].handChoice.duplicate_deep())
+	
+	
+	return ret
 
 static func _countOccurencesOfValInHand(hand: Array, val: int) -> int:
 	var ret = 0

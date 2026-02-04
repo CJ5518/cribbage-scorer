@@ -3,7 +3,6 @@ extends GutTest
 func assertScoreIs(hand: Array, cut: Array, crib: bool, score: int):
 	assert_eq(Cribbage.countHand(hand, cut, crib), score)
 
-
 func test_flushCounts():
 	var suit = Cards.SUIT.DIAMOND
 	assertScoreIs([[2,suit],[4,suit],[6,suit],[8,suit]], [10,suit], false, 5)
@@ -58,3 +57,17 @@ func test_counting():
 	assertScoreIs([[4,suit],[5,suit],[3,suit],[6,suit]], [4,Cards.SUIT.SPADE], false, 18)
 	assertScoreIs([[4,suit],[5,suit],[6,Cards.SUIT.SPADE],[6,suit]], [4,Cards.SUIT.SPADE], false, 24)
 	assertScoreIs([[5, suit],[5,Cards.SUIT.CLUB],[5,suit],[5,suit]], [6,0], false, 20)
+
+func test_discard_decisions():
+	var decisions = CribbageThinker.pickGoodChoicesForDiscard([
+	[5, Cards.SUIT.CLUB],
+	[5, Cards.SUIT.SPADE],
+	[5, Cards.SUIT.HEART],
+	[5, Cards.SUIT.DIAMOND],
+	[1, Cards.SUIT.CLUB],
+	[2, Cards.SUIT.CLUB]
+])
+	assert_eq(decisions.size(), 1)
+	assert_eq(decisions[0].size(), 4)
+	for q in range(decisions[0].size()):
+		assert_eq(decisions[0][q][0],5)
