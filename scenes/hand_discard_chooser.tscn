@@ -1,10 +1,17 @@
 [gd_scene load_steps=3 format=3 uid="uid://vqcg1wcq8ibg"]
 
 [ext_resource type="Script" uid="uid://p7irl61ocx3p" path="res://scripts/hand_discard_chooser.gd" id="1_5ba5p"]
-[ext_resource type="PackedScene" uid="uid://cdpshql6jftai" path="res://scenes/CardSprite.tscn" id="1_digok"]
+[ext_resource type="LabelSettings" uid="uid://bh3o6rb41ea0c" path="res://assets/DefaultLabelSettings.tres" id="2_5ba5p"]
 
 [node name="HandDiscardChooser" type="Node2D"]
 script = ExtResource("1_5ba5p")
 
-[node name="CardSprite" parent="." instance=ExtResource("1_digok")]
-position = Vector2(227, 120)
+[node name="LabelTemplate" type="Label" parent="."]
+visible = false
+texture_filter = 1
+offset_left = 73.0
+offset_top = 1.0
+offset_right = 174.0
+offset_bottom = 25.0
+text = "12 - 12.3% place me at card pos + like 30 or so"
+label_settings = ExtResource("2_5ba5p")

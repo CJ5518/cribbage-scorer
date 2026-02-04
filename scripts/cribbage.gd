@@ -70,9 +70,8 @@ static func countFifteens(hand: Array, cut: Array, _crib: bool) -> int:
 			if val + total < 15:
 				ret += adUp.call(subArrDup, val + total, adUp)
 		return ret
-
 	return addsUp.call(values, 0, addsUp) * 2
-	
+
 static func countRuns(hand: Array, cut: Array, _crib: bool) -> int:
 	var score: int = 0
 	
@@ -113,15 +112,10 @@ static func countHand(hand: Array, cut: Array, crib: bool) -> int:
 	var score: int = 0
 	
 	score += countFlush(hand, cut, crib)
-	print(score)
 	score += countNobs(hand, cut, crib)
-	print(score)
 	score += countPairs(hand, cut, crib)
-	print(score)
 	score += countFifteens(hand, cut, crib)
-	print(score)
 	score += countRuns(hand, cut, crib)
-	print(score)
 	
 	
 	return score
