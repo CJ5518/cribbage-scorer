@@ -21,6 +21,25 @@ func printCardArray(arr: Array):
 	for q in range(arr.size()):
 		print(str(arr[q][0]) + " " + Cards.suitToString(arr[q][1]))
 
+#takes the full results and collapses them
+func collapseResults(original: Array) -> Array:
+	var ret: Array = []
+	var unique = {}
+	
+	
+	for q in range(original.size()):
+		var array: Array = original[q]
+		if unique.has(array[0]):
+			ret[unique[array[0]]][2].append(array[2])
+			ret[unique[array[0]]][1] += array[1]
+		else:
+			unique[array[0]] = ret.size()
+			var newObj = array.duplicate_deep()
+			newObj[2] = [newObj[2]]
+			ret.append(newObj)
+	ret.sort_custom(func(a,b): return a[0] > b[0])
+	return ret
+
 #Run every possible discard and see what's up
 func array6choose4(arr: Array):
 	var tmp = arr.duplicate_deep()
@@ -30,7 +49,7 @@ func array6choose4(arr: Array):
 		var tmp2 = tmp.duplicate_deep()
 		for i in range(startAt, arr.size() - 1):
 			tmp2.pop_at(i)
-			resultsList.append([tmp2.duplicate_deep(), evaluateHandChoice(tmp2, arr)])
+			resultsList.append([tmp2.duplicate_deep(), collapseResults(evaluateHandChoice(tmp2, arr))])
 			tmp2 = tmp.duplicate_deep()
 		tmp = arr.duplicate_deep()
 		startAt += 1
@@ -88,13 +107,15 @@ func drawResults():
 		#every choice of 4 cards
 		for i in range(hand.size()):
 			sprite = newCardSprite(hand[i][0], hand[i][1])
-			sprite.position = Vector2((i * 24) + (q * 24 * 8), 50)
+			sprite.position = Vector2((i * 24) + (q * 24 * 15), 50)
 		#every choice of cut card
 		var cutStats = results[1]
 		for j in range(cutStats.size()):
-			sprite = newCardSprite(cutStats[j][2], -1)
-			sprite.position = Vector2((q * 24 * 8), 100 + (j * 40))
-			label = newLabel(str(cutStats[j][0]) + " - " + str(cutStats[j][1] * 100) + "%")
+			for k in range(cutStats[j][2].size()):
+				@warning_ignore("int_as_enum_without_match")
+				sprite = newCardSprite(cutStats[j][2][k], -1 as Cards.SUIT)
+				sprite.position = Vector2((q * 24 * 15) + (k * 24), 100 + (j * 40))
+			label = newLabel(str(cutStats[j][0]) + " - " + str(cutStats[j][1] * 100).pad_decimals(1) + "%")
 			label.position = sprite.position + Vector2(32,0)
 
 var panAndZoom: PanAndZoom
