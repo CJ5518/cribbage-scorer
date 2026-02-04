@@ -42,8 +42,12 @@ func drawResults(resultsList: Array):
 		for i in range(hand.size()):
 			sprite = newCardSprite(hand[i][0], hand[i][1])
 			sprite.position = Vector2((i * 24) + (q * 24 * 15), 50)
+		#The big stats
+		label = newLabel("Min: " + str(results.min) + " Max: " + str(results.max) + " avg: " + str(results.average).pad_decimals(1))
+		label.position = sprite.position + Vector2(32,0)
 		#every choice of cut card
 		var cutStats = results.thoughts
+		
 		for j in range(cutStats.size()):
 			var thoughts = cutStats[j]
 			for k in range(thoughts.cutVals.size()):
