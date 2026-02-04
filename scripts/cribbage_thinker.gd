@@ -17,7 +17,7 @@ static func getFullThoughtsOn6CardHand(hand: Array):
 		var tmp2 = tmp.duplicate_deep()
 		for i in range(startAt, hand.size() - 1):
 			tmp2.pop_at(i)
-			ret.append([tmp2.duplicate_deep(), _getDiscardChoiceThoughts(hand, tmp2)])
+			ret.append({"handChoice": tmp2.duplicate_deep(), "thoughts": _getDiscardChoiceThoughts(hand, tmp2)})
 			tmp2 = tmp.duplicate_deep()
 		tmp = hand.duplicate_deep()
 		startAt += 1

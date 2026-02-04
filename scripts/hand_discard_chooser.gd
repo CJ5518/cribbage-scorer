@@ -1,13 +1,5 @@
 extends Node2D
 
-
-#TODO:
-#I wanna have most of this junk in a different file, call it cribbage engine or something
-#Then this code just calls into that, and can do more important things like allow for selecting the
-#cards and such. Also we could collapse in the original function I think? Also names are bad
-#lots to do!
-
-
 #Example hand that has a very obvious play
 var testHand = [
 	[5, Cards.SUIT.CLUB],
@@ -45,13 +37,13 @@ func drawResults(resultsList: Array):
 	#draw all the possibilites of 4 cards
 	for q in range(resultsList.size()):
 		var results = resultsList[q]
-		var hand = results[0]
+		var hand = results.handChoice
 		#every choice of 4 cards
 		for i in range(hand.size()):
 			sprite = newCardSprite(hand[i][0], hand[i][1])
 			sprite.position = Vector2((i * 24) + (q * 24 * 15), 50)
 		#every choice of cut card
-		var cutStats = results[1]
+		var cutStats = results.thoughts
 		for j in range(cutStats.size()):
 			var thoughts = cutStats[j]
 			for k in range(thoughts.cutVals.size()):
