@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://tm8nio65l2cl"]
+[gd_scene load_steps=9 format=3 uid="uid://tm8nio65l2cl"]
 
 [ext_resource type="Script" uid="uid://c1lupamm4dei5" path="res://scripts/game_scene.gd" id="1_onqr8"]
 [ext_resource type="PackedScene" uid="uid://cdpshql6jftai" path="res://scenes/CardSprite.tscn" id="2_onqr8"]
 [ext_resource type="Theme" uid="uid://dam5y0lg1fiyp" path="res://assets/MenuTheme.tres" id="3_bw6k5"]
 [ext_resource type="FontFile" uid="uid://cn4b38c7xfha2" path="res://assets/DotGothic16-Regular.ttf" id="3_ycayy"]
 [ext_resource type="LabelSettings" uid="uid://bh3o6rb41ea0c" path="res://assets/DefaultLabelSettings.tres" id="5_y3j0m"]
+[ext_resource type="AudioStream" uid="uid://cbem7be6hrle" path="res://assets/correct.ogg" id="6_kk2rg"]
+[ext_resource type="AudioStream" uid="uid://23qbtg3b4fx" path="res://assets/wrong.ogg" id="7_b5spy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bw6k5"]
 font = ExtResource("3_ycayy")
@@ -68,3 +70,9 @@ offset_right = 638.0
 offset_bottom = 104.0
 text = "Menu"
 label_settings = SubResource("LabelSettings_bw6k5")
+
+[node name="CorrectSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_kk2rg")
+
+[node name="WrongSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_b5spy")
