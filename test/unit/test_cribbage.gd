@@ -57,6 +57,7 @@ func test_counting():
 	assertScoreIs([[4,suit],[5,suit],[3,suit],[6,suit]], [4,Cards.SUIT.SPADE], false, 18)
 	assertScoreIs([[4,suit],[5,suit],[6,Cards.SUIT.SPADE],[6,suit]], [4,Cards.SUIT.SPADE], false, 24)
 	assertScoreIs([[5, suit],[5,Cards.SUIT.CLUB],[5,suit],[5,suit]], [6,0], false, 20)
+	assertScoreIs([[7, Cards.SUIT.SPADE], [2, Cards.SUIT.HEART], [5, Cards.SUIT.HEART], [6,Cards.SUIT.HEART]], [11, Cards.SUIT.DIAMOND], false, 7)
 
 func test_discard_decisions():
 	var decisions = CribbageThinker.pickGoodChoicesForDiscard([

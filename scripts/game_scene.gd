@@ -46,7 +46,6 @@ func _ready() -> void:
 		numsJustPressed.append(false)
 	deck = Deck.new()
 	randomCards()
-	$Control/MenuButton.pressed.connect(randomCards)
 
 #Could've done classes but with 2 states it wasn't really a huge deal imo
 func exitWaiting():

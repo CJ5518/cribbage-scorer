@@ -90,7 +90,10 @@ static func countRuns(hand: Array, cut: Array, _crib: bool) -> int:
 		elif values[q] == lastItem + 1:
 			runLength += 1
 		else:
-			runLength = 1
+			if runLength >= 3:
+				break
+			else:
+				runLength = 1
 			runDoubles = []
 		lastItem = values[q]
 	if runLength >= 3:
