@@ -42,6 +42,9 @@ func randomCards():
 
 func _ready() -> void:
 	cardSprites = [$CardSprite, $CardSprite2, $CardSprite3, $CardSprite4]
+	$Control/MenuButton.button_down.connect(
+		func(): get_tree().quit()
+	)
 	for q in range(10):
 		numsJustPressed.append(false)
 	deck = Deck.new()
